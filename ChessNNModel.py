@@ -4,13 +4,13 @@ import tensorflow.keras.layers as layers
 import numpy as np
 
 class ChessNNModel(tf.keras.Model):
-    def __init__(self):
+    def __init__(self, finalLayer="sigmoid"):
         super(ChessNNModel, self).__init__()
         self.d1 = layers.Dense(128, activation="relu")
         self.d2 = layers.Dense(128, activation="relu")
         self.d3 = layers.Dense(128, activation="relu")
         self.d4 = layers.Dense(128, activation="relu")
-        self.d5 = layers.Dense(1, activation="sigmoid")
+        self.d5 = layers.Dense(1, activation=finalLayer)
 
     def call(self, x):
         x = self.d1(x)

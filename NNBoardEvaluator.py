@@ -39,9 +39,3 @@ class NNBoardEvaluator(BoardEvaluator):
         if(not piece == None):
             arr[0][piece.piece_type - 1] = 1
         return arr
-
-    def updateParams(self, board):
-        with tf.GradientTape() as tape:
-            lossValue = tf.constant(1)
-        grads = tape.gradient(lossValue, self.chessNNModel.trainable_variables)
-        self.optimizer.apply_gradients(zip(grads, self.chessNNModel.trainable_variables))
